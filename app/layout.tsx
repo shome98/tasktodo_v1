@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Nunito_Sans } from "next/font/google";
 import "./globals.css";
-
+import { ClerkProvider } from "@clerk/nextjs";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -25,12 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
+    <ClerkProvider>
     <html lang="en">
       <body
-        className={`${nunitoSans.variable} ${montserrat.variable} antialiased`}
+        className={`${nunitoSans.variable} ${montserrat.variable} antialiased dark`}
       >
         {children}
       </body>
-    </html>
+      </html>
+      </ClerkProvider>
   );
 }
