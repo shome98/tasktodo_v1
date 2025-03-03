@@ -1,7 +1,7 @@
 import { clerkClient, clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-const publicRoutes = ["/", "/api/webhook/register", "/sign-in", "/sign-up"];
+const publicRoutes = ["/", "/api/webhooks/register", "/sign-in", "/sign-up"];
 const adminRoutes = ["/admin/dashboard", "/admin/users"];
 type UserRole = "admin" | "user";
 
