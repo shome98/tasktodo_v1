@@ -18,7 +18,7 @@ import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 
 // Loading Spinner Component
-function LoadingSpinner() {
+export function LoadingSpinner() {
   return (
     <div className="flex items-center justify-center min-h-screen">
       <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
