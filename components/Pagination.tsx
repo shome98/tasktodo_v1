@@ -13,7 +13,7 @@ export function Pagination({
   onPageChange,
 }: PaginationProps) {
   return (
-    <div className="flex justify-center space-x-2 mt-4">
+    <div className="flex justify-center space-x-2 mt-4 w-">
       <Button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
