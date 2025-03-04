@@ -2,7 +2,7 @@ import prisma from "@/lib/prisma";
 import { auth } from "@clerk/nextjs/server";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function PUT(req: NextRequest,{ params }: { params: { id: string } }) {
+export async function PUT(req: NextRequest,props: { params: Promise<{ id: string }> }) {
   const { userId } = await auth();
 
   if (!userId) {
@@ -11,7 +11,8 @@ export async function PUT(req: NextRequest,{ params }: { params: { id: string } 
 
   try {
     const { completed, title, description } = await req.json();
-    const todoId = params.id;
+    const { id } = await props.params;
+    const todoId = id;
 
     const todo = await prisma.todo.findUnique({
       where: { id: todoId },
@@ -44,7 +45,7 @@ export async function PUT(req: NextRequest,{ params }: { params: { id: string } 
   }
 }
 
-export async function DELETE(req: NextRequest,{ params }: { params: { id: string } }) {
+export async function DELETE(req: NextRequest,props: { params: Promise<{ id: string }> }) {
   const { userId } = await auth();
 
   if (!userId) {
@@ -52,7 +53,8 @@ export async function DELETE(req: NextRequest,{ params }: { params: { id: string
   }
 
   try {
-    const todoId = params.id;
+    const { id } = await props.params;
+    const todoId = id
 
     const todo = await prisma.todo.findUnique({
       where: { id: todoId },
